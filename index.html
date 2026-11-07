@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taller de DOM y BOM | Primeros Pasos</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body class="bg-body-tertiary">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-body border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="#">
+        <i class="bi bi-filetype-js me-1"></i> Práctica DOM & BOM
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-2">
+          <li class="nav-item">
+            <a class="nav-link active" href="#teoria"><i class="bi bi-journal-text me-1"></i>Teoría</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#practica"><i class="bi bi-play-circle me-1"></i>Práctica</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+
+    <!-- HERO / INTRODUCCIÓN -->
+    <section class="p-4 p-md-5 mb-5 rounded-4 bg-body border shadow-sm" id="teoria">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <span class="badge text-bg-primary mb-2">Fundamentos Web</span>
+          <h1 class="display-6 fw-bold">Manipulación del DOM & APIs del BOM</h1>
+          <p class="lead text-body-secondary mb-0">
+            El <strong>DOM</strong> representa la estructura del documento como objetos manipulables en memoria.
+            El <strong>BOM</strong> nos ofrece comunicación directa con el entorno del navegador (ventanas, temporizadores, resolución).
+          </p>
+        </div>
+        <div class="col-lg-4 text-center">
+          <div class="p-3 border rounded-3 bg-body-secondary font-monospace small text-start">
+            <span class="text-secondary">// Jerarquía básica</span><br>
+            <span class="text-warning">window</span> (BOM)<br>
+            &nbsp;└── <span class="text-info">document</span> (DOM)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="text-success">&lt;html&gt;</span> ...
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEORÍA: SELECCIÓN Y CLASES -->
+    <section class="row g-4 mb-5">
+      <div class="col-lg-6">
+        <div class="card h-100 shadow-sm border-0 bg-body">
+          <div class="card-header bg-transparent border-0 pt-3">
+            <h5 class="card-title fw-bold text-info"><i class="bi bi-search me-2"></i>Selección & Contenido</h5>
+          </div>
+          <div class="card-body">
+            <h6 class="fw-semibold text-secondary">Seleccionar elementos</h6>
+            <ul class="list-group list-group-flush mb-3">
+              <li class="list-group-item bg-transparent px-0"><code>getElementById('id')</code> → Por identificador único.</li>
+              <li class="list-group-item bg-transparent px-0"><code>querySelector('selector')</code> → Primer coincidencia CSS.</li>
+              <li class="list-group-item bg-transparent px-0"><code>querySelectorAll('selector')</code> → Colección (NodeList).</li>
+            </ul>
+
+            <h6 class="fw-semibold text-secondary">Modificar contenido</h6>
+            <div class="p-2 border rounded bg-body-tertiary">
+              <p class="mb-1"><code>textContent</code>: Inserta texto plano (más rápido y seguro).</p>
+              <p class="mb-0"><code>innerHTML</code>: Interpreta HTML (usar con precaución ante XSS).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card h-100 shadow-sm border-0 bg-body">
+          <div class="card-header bg-transparent border-0 pt-3">
+            <h5 class="card-title fw-bold text-success"><i class="bi bi-palette me-2"></i>Gestión de Clases (classList)</h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle mb-0">
+                <thead class="table-light table-group-divider">
+                  <tr>
+                    <th>Método</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody class="small">
+                  <tr>
+                    <td><code>.add('clase')</code></td>
+                    <td>Añade si no existe.</td>
+                  </tr>
+                  <tr>
+                    <td><code>.remove('clase')</code></td>
+                    <td>Quita la clase seleccionada.</td>
+                  </tr>
+                  <tr>
+                    <td><code>.toggle('clase')</code></td>
+                    <td>Alterna presencia (quita/pone).</td>
+                  </tr>
+                  <tr>
+                    <td><code>.contains('clase')</code></td>
+                    <td>Verifica presencia (retorna booleano).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN PRÁCTICA -->
+    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-2" id="practica">
+      <h2 class="h3 fw-bold mb-0">Laboratorio Práctico</h2>
+      <span class="badge rounded-pill text-bg-secondary">Ejercicios en vivo</span>
+    </div>
+
+    <div class="row g-4">
+      
+      <!-- Card 1: Modificar / Alternar -->
+      <div class="col-md-6">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h5 class="card-title fw-bold">1. Modificar y Visibilidad</h5>
+              <span class="badge text-bg-info">DOM</span>
+            </div>
+            
+            <div class="p-3 mb-3 border rounded text-center bg-body-tertiary">
+              <p class="fs-5 mb-0" id="parrafo">Hola mundo 🌎</p>
+            </div>
+            <button class="btn btn-outline-primary w-100 mb-3" onclick="cambiarTexto()">
+              <i class="bi bi-pencil-square me-1"></i> Cambiar Texto
+            </button>
+
+            <hr />
+
+            <div class="p-3 mb-3 border rounded text-center bg-body-tertiary">
+              <p class="mb-0" id="parrafo-oculto">👀 Este párrafo se puede ocultar o mostrar.</p>
+            </div>
+            <button class="btn btn-danger w-100" id="btnOcultar" onclick="ocultarParrafo()">
+              <i class="bi bi-eye-slash me-1"></i> Ocultar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Eliminar elemento -->
+      <div class="col-md-6">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h5 class="card-title fw-bold">2. Eliminación de Nodos</h5>
+              <span class="badge text-bg-info">DOM</span>
+            </div>
+            <p class="text-body-secondary small">Demostración del método nativo <code>element.remove()</code>.</p>
+            
+            <div class="p-3 mb-3 border border-danger-subtle bg-danger-subtle text-danger-emphasis rounded text-center my-auto">
+              <p class="mb-0 fw-semibold" id="parrafo-eliminar">Este elemento será eliminado del árbol ✖️</p>
+            </div>
+            
+            <button class="btn btn-danger mt-auto" id="btnEliminar">
+              <i class="bi bi-trash3 me-1"></i> Eliminar Nodo
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Lista dinámica (appendChild / innerHTML) -->
+      <div class="col-md-6">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h5 class="card-title fw-bold">3. Creación Dinámica</h5>
+              <span class="badge text-bg-info">DOM</span>
+            </div>
+            <form id="formTarea" class="mb-3">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="tarea"
+                  placeholder="Escribe una nueva tarea..."
+                  minlength="2"
+                  maxlength="150"
+                  required
+                />
+                <button class="btn btn-success" type="submit">
+                  <i class="bi bi-plus-lg"></i> Agregar
+                </button>
+              </div>
+            </form>
+            <ul class="list-group list-group-flush border rounded" id="listaTareas">
+              <!-- Elementos agregados dinámicamente -->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: BOM - setTimeout & setInterval -->
+      <div class="col-md-6">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h5 class="card-title fw-bold">4. Temporizadores</h5>
+              <span class="badge text-bg-warning text-dark">BOM</span>
+            </div>
+            
+            <!-- setTimeout -->
+            <label class="form-label small fw-semibold text-secondary">window.setTimeout</label>
+            <button class="btn btn-outline-warning w-100 mb-2" id="btnMostrarAlert">
+              <i class="bi bi-hourglass-split me-1"></i> Disparar retardo (3s)
+            </button>
+            <div class="alert alert-warning py-2 d-none mb-4" role="alert">
+              <i class="bi bi-bell-fill me-1"></i> ¡Apareció tras 3 segundos! ⏰
+            </div>
+
+            <hr />
+
+            <!-- setInterval -->
+            <label class="form-label small fw-semibold text-secondary">window.setInterval</label>
+            <div class="d-flex align-items-center justify-content-between p-3 border rounded bg-body-tertiary">
+              <span class="display-6 font-monospace fw-bold text-info" id="reloj">00:00:00</span>
+              <button class="btn btn-sm btn-outline-danger" id="btnDetenerReloj">
+                <i class="bi bi-stop-circle me-1"></i> Detener
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="text-center text-body-secondary py-4 border-top mt-5 bg-body">
+    <small>&copy; Practica DOM y BOM - Todos los derechos reservados</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
