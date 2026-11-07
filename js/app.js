@@ -13,3 +13,30 @@ const cambiarTexto = ()=>{
     parrafo.classList.add('text-primary')
     // parrafo.className = 'fs-5 mb-0 text-primary'
 }
+
+const ocultarMensaje = ()=>{
+    console.log('desde la funcion ocultar mensaje, titulo:')
+    const div = document.querySelectorAll('div')
+    console.log(div[23])
+
+    if(btnOcultar.textContent.includes('Ocultar')){
+        div[23].classList.add('d-none')
+        //estilazar el boton
+        btnOcultar.textContent = 'Mostrar'
+        btnOcultar.classList.replace('btn-danger', 'btn-success')
+    }else{
+        //mostrar el div oculto
+         div[23].classList.remove('d-none')
+        btnOcultar.textContent = 'Ocultar'
+        btnOcultar.classList.replace('btn-success', 'btn-danger')
+    }
+
+}
+
+const btnOcultar = document.querySelector('#btnOcultar')
+
+//agregar un manejador de eventos
+//ejemplo de funcion con parametros
+// btnOcultar.addEventListener('click', ()=> ocultarMensaje('funcion con parametros'))
+//ejemplo de funcion sin parametros
+btnOcultar.addEventListener('click', ocultarMensaje)
