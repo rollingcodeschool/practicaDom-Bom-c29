@@ -27,7 +27,7 @@ const ocultarMensaje = ()=>{
     }else{
         //mostrar el div oculto
          div[23].classList.remove('d-none')
-        btnOcultar.textContent = 'Ocultar'
+        btnOcultar.innerHTML = '<i class="bi bi-eye-slash me-1"></i> Ocultar'
         btnOcultar.classList.replace('btn-success', 'btn-danger')
     }
 
