@@ -34,6 +34,7 @@ const ocultarMensaje = () => {
 
 const btnOcultar = document.querySelector("#btnOcultar");
 const btnEliminar = document.querySelector("#btnEliminar");
+const formTarea = document.querySelector('form')
 
 //agregar un manejador de eventos
 //ejemplo de funcion con parametros
@@ -68,3 +69,21 @@ btnEliminar.addEventListener("click", () => {
     }
   });
 });
+formTarea.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    //tomar el texto del input
+    const tarea = document.querySelector('#tarea').value
+    // opcion 1: recomendada
+    //crear el li con ese texto
+    const li = document.createElement('li') //<li></li>
+    li.textContent = tarea //<li>nombre tarea</li>
+    li.classList.add('list-group-item') //<li class= 'list-group-item'>nombre tarea</li>
+    //asignar el li al ul
+    const ul = document.querySelector('#listaTareas')
+
+    ul.appendChild(li)
+
+    //limpiar o resetear el formulario
+    formTarea.reset()
+
+})
