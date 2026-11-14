@@ -110,3 +110,24 @@ formTarea.addEventListener("submit", (e)=>{
     formTarea.reset()
 
 })
+
+// métodos del BOM setTimeOut, setInterval
+// const saludar = ()=>{
+//     alert('hola mundo')
+// }
+
+// setTimeout(()=>{
+//       alert('hola mundo')
+// }, 3000)
+let contador= 1;
+const idInterval= setInterval(()=>{
+    console.log('hola mundo')
+    contador++
+}, 1500)
+
+if(contador === 4 ){
+    //detener el intervalo
+    clearInterval(idInterval)
+}else{
+    console.log('cuanto tiene el contador '+ contador)
+}
