@@ -72,7 +72,26 @@ btnEliminar.addEventListener("click", () => {
 formTarea.addEventListener("submit", (e)=>{
     e.preventDefault();
     //tomar el texto del input
-    const tarea = document.querySelector('#tarea').value
+    const tarea = document.querySelector('#tarea').value.trim()
+    console.log(tarea)
+    //validar cantidad de caracteres
+    if(tarea.length < 2 || tarea.length >150){
+        // return alert('Debes ingresar un texto de entre 2 y 150 caracteres')
+        return  Swal.fire({
+        title: "Debes ingresar un texto de entre 2 y 150 caracteres",
+        icon: "error",
+      });
+    }
+
+    //validar caracteres especiales
+    const regExp = /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/
+    if(!regExp.test(tarea)){
+        return  Swal.fire({
+        title: "Debes ingresar solo letras y números",
+        icon: "error",
+      });
+    }
+
     // opcion 1: recomendada
     //crear el li con ese texto
     const li = document.createElement('li') //<li></li>
@@ -82,6 +101,10 @@ formTarea.addEventListener("submit", (e)=>{
     const ul = document.querySelector('#listaTareas')
 
     ul.appendChild(li)
+
+    //opcion 2: recomendada solo para elementos complejos que quiera crear.
+    // const ul = document.querySelector('#listaTareas')
+    // ul.innerHTML += `<li class="list-group-item">${tarea}</li>`
 
     //limpiar o resetear el formulario
     formTarea.reset()
