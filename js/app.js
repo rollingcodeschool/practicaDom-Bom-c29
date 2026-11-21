@@ -1,3 +1,6 @@
+import { prueba, saludo, validarCaracteres, validarSimbolos } from "./validaciones.js";
+import nuevoDia from './pruebaExport.js'
+
 const cambiarTexto = () => {
   console.log("Desde la funcion cambiar texto");
   const parrafo = document.getElementById("parrafo"); //devuelve un objeto
@@ -77,7 +80,7 @@ formTarea.addEventListener("submit", (e) => {
   const tarea = document.querySelector("#tarea").value.trim();
   console.log(tarea);
   //validar cantidad de caracteres
-  if (tarea.length < 2 || tarea.length > 150) {
+  if (!validarCaracteres(tarea) ) {
     // return alert('Debes ingresar un texto de entre 2 y 150 caracteres')
     return Swal.fire({
       title: "Debes ingresar un texto de entre 2 y 150 caracteres",
@@ -86,8 +89,7 @@ formTarea.addEventListener("submit", (e) => {
   }
 
   //validar caracteres especiales
-  const regExp = /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/;
-  if (!regExp.test(tarea)) {
+  if (!validarSimbolos(tarea)) {
     return Swal.fire({
       title: "Debes ingresar solo letras y números",
       icon: "error",
@@ -169,3 +171,7 @@ reloj.textContent= `${formato.format(fecha)}`
 // }else{
 //     console.log('cuanto tiene el contador '+ contador)
 // }
+
+prueba()
+console.log(saludo)
+nuevoDia()
