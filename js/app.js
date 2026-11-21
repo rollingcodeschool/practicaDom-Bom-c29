@@ -34,7 +34,8 @@ const ocultarMensaje = () => {
 
 const btnOcultar = document.querySelector("#btnOcultar");
 const btnEliminar = document.querySelector("#btnEliminar");
-const formTarea = document.querySelector('form')
+const formTarea = document.querySelector("form");
+const btnMostrarMensaje = document.querySelector("#btnMostrarAlert");
 
 //agregar un manejador de eventos
 //ejemplo de funcion con parametros
@@ -69,47 +70,53 @@ btnEliminar.addEventListener("click", () => {
     }
   });
 });
-formTarea.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    //tomar el texto del input
-    const tarea = document.querySelector('#tarea').value.trim()
-    console.log(tarea)
-    //validar cantidad de caracteres
-    if(tarea.length < 2 || tarea.length >150){
-        // return alert('Debes ingresar un texto de entre 2 y 150 caracteres')
-        return  Swal.fire({
-        title: "Debes ingresar un texto de entre 2 y 150 caracteres",
-        icon: "error",
-      });
-    }
+formTarea.addEventListener("submit", (e) => {
+  e.preventDefault();
+  //tomar el texto del input
+  const tarea = document.querySelector("#tarea").value.trim();
+  console.log(tarea);
+  //validar cantidad de caracteres
+  if (tarea.length < 2 || tarea.length > 150) {
+    // return alert('Debes ingresar un texto de entre 2 y 150 caracteres')
+    return Swal.fire({
+      title: "Debes ingresar un texto de entre 2 y 150 caracteres",
+      icon: "error",
+    });
+  }
 
-    //validar caracteres especiales
-    const regExp = /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/
-    if(!regExp.test(tarea)){
-        return  Swal.fire({
-        title: "Debes ingresar solo letras y números",
-        icon: "error",
-      });
-    }
+  //validar caracteres especiales
+  const regExp = /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/;
+  if (!regExp.test(tarea)) {
+    return Swal.fire({
+      title: "Debes ingresar solo letras y números",
+      icon: "error",
+    });
+  }
 
-    // opcion 1: recomendada
-    //crear el li con ese texto
-    const li = document.createElement('li') //<li></li>
-    li.textContent = tarea //<li>nombre tarea</li>
-    li.classList.add('list-group-item') //<li class= 'list-group-item'>nombre tarea</li>
-    //asignar el li al ul
-    const ul = document.querySelector('#listaTareas')
+  // opcion 1: recomendada
+  //crear el li con ese texto
+  const li = document.createElement("li"); //<li></li>
+  li.textContent = tarea; //<li>nombre tarea</li>
+  li.classList.add("list-group-item"); //<li class= 'list-group-item'>nombre tarea</li>
+  //asignar el li al ul
+  const ul = document.querySelector("#listaTareas");
 
-    ul.appendChild(li)
+  ul.appendChild(li);
 
-    //opcion 2: recomendada solo para elementos complejos que quiera crear.
-    // const ul = document.querySelector('#listaTareas')
-    // ul.innerHTML += `<li class="list-group-item">${tarea}</li>`
+  //opcion 2: recomendada solo para elementos complejos que quiera crear.
+  // const ul = document.querySelector('#listaTareas')
+  // ul.innerHTML += `<li class="list-group-item">${tarea}</li>`
 
-    //limpiar o resetear el formulario
-    formTarea.reset()
-
-})
+  //limpiar o resetear el formulario
+  formTarea.reset();
+});
+btnMostrarMensaje.addEventListener("click", () => {
+  setTimeout(() => {
+    //traer el alert amarillo
+    const alertWarning = document.querySelector(".alert-warning");
+    alertWarning.classList.remove("d-none");
+  }, 3000);
+});
 
 // métodos del BOM setTimeOut, setInterval
 // const saludar = ()=>{
@@ -119,15 +126,15 @@ formTarea.addEventListener("submit", (e)=>{
 // setTimeout(()=>{
 //       alert('hola mundo')
 // }, 3000)
-let contador= 1;
-const idInterval= setInterval(()=>{
-    console.log('hola mundo')
-    contador++
-}, 1500)
+// let contador= 1;
+// const idInterval= setInterval(()=>{
+//     console.log('hola mundo')
+//     contador++
+// }, 1500)
 
-if(contador === 4 ){
-    //detener el intervalo
-    clearInterval(idInterval)
-}else{
-    console.log('cuanto tiene el contador '+ contador)
-}
+// if(contador === 4 ){
+//     //detener el intervalo
+//     clearInterval(idInterval)
+// }else{
+//     console.log('cuanto tiene el contador '+ contador)
+// }
