@@ -111,11 +111,24 @@ formTarea.addEventListener("submit", (e) => {
   formTarea.reset();
 });
 btnMostrarMensaje.addEventListener("click", () => {
+  //actualizar el texto del boton
+  let segundos = 2;
+  const idInterval = setInterval(()=>{
+    btnMostrarMensaje.innerHTML = `<i class="bi bi-hourglass-split me-1"></i> Disparar retardo (${segundos}s)`
+    if(segundos === 0){
+      clearInterval(idInterval)
+    }
+     segundos--
+  }, 1000)
+
   setTimeout(() => {
     //traer el alert amarillo
     const alertWarning = document.querySelector(".alert-warning");
     alertWarning.classList.remove("d-none");
   }, 3000);
+
+  //deshabilitar boton
+  btnMostrarMensaje.classList.add('disabled')
 });
 
 // métodos del BOM setTimeOut, setInterval
