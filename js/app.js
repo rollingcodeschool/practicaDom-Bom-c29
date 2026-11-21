@@ -36,7 +36,8 @@ const btnOcultar = document.querySelector("#btnOcultar");
 const btnEliminar = document.querySelector("#btnEliminar");
 const formTarea = document.querySelector("form");
 const btnMostrarMensaje = document.querySelector("#btnMostrarAlert");
-
+const reloj = document.querySelector('#reloj')
+const btnDetenerReloj = document.querySelector('#btnDetenerReloj')
 //agregar un manejador de eventos
 //ejemplo de funcion con parametros
 // btnOcultar.addEventListener('click', ()=> ocultarMensaje('funcion con parametros'))
@@ -130,6 +131,23 @@ btnMostrarMensaje.addEventListener("click", () => {
   //deshabilitar boton
   btnMostrarMensaje.classList.add('disabled')
 });
+btnDetenerReloj.addEventListener('click', ()=>{
+  clearInterval(idIntervalReloj)
+  btnDetenerReloj.classList.add('disabled')
+})
+
+
+//reloj
+const idIntervalReloj = setInterval(() => {
+const fecha = new Date()
+const formato = Intl.DateTimeFormat('es-AR',{
+  hour:'2-digit',
+  minute:'2-digit',
+  second: '2-digit'
+})
+reloj.textContent= `${formato.format(fecha)}`
+//reloj.textContent= `${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`
+}, 1000);
 
 // métodos del BOM setTimeOut, setInterval
 // const saludar = ()=>{
